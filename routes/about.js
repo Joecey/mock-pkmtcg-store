@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
     // render our view
-    res.render('about', { title: 'HomeBrewedTCG - About' })
+    res.render('about', { title: 'About' })
 })
 
 // export our index.js route to app.js

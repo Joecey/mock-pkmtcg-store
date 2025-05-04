@@ -26,6 +26,10 @@ app.use('/', indexRouter) // This allows us to handle GET, POST, etc... on speci
 app.use('/products', productsRouter)
 app.use('/about', aboutRouter)
 
+app.use((_req, res, _next) => {
+    res.status(404).render('404', { title: 'Page Not Found' })
+})
+
 // start the server
 app.listen(port, () => {
     console.log('Server is now running on port ' + port)
