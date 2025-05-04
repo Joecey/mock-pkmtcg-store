@@ -4,11 +4,16 @@
   "description": "Mock Pokemon TCG Store made with Express, .ejs, bootstrap, and sql",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "npx nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joe Linogao",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
