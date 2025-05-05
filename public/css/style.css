@@ -1,7 +1,28 @@
+:root {
+    --text: #0c060e;
+    --background: #fbf9fd;
+    --primary: #985abd;
+    --secondary: #d696d3;
+    --accent: #c670bc;
+}
+
 body {
     font-family: 'Space Grotesk', sans-serif !important;
     font-optical-sizing: auto;
     padding: 1rem;
+}
+
+navbar {
+    height: 5rem;
+}
+
+navbar > a {
+    height: fit-content;
+    font-weight: 600;
+}
+
+#HomeBrewedTCGLogo {
+    height: 100%;
 }
 
 h1 {
@@ -11,7 +32,19 @@ h1 {
 }
 
 .image404pikachu {
+    margin-left: 1rem;
     max-width: 10rem;
     height: auto;
     object-fit: contain;
+}
+
+.navbar-button {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: var(--text) !important;
+    transition: all 0.1s ease-in;
+}
+
+.navbar-button:hover {
+    color: var(--accent) !important;
 }

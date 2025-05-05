@@ -24,10 +24,17 @@
         <div class="container">
             <div class="row justify-content-center">
                 <main class="d-flex flex-column align-items-center min-vh-100">
-                    <navbar class="d-flex flex-row gap-4 mb-4">
-                        <a href="/">Home</a>
-                        <a href="/products">Products</a>
-                        <a href="/about">About</a> </navbar
+                    <navbar
+                        class="position-relative d-flex flex-row gap-3 mb-4 justify-content-center align-items-center w-100"
+                    >
+                        <img
+                            id="HomeBrewedTCGLogo"
+                            src="/assets/logo.png"
+                            alt="HomeBrewedTCG Logo"
+                        />
+                        <a class="navbar-button" href="/">Home</a>
+                        <a class="navbar-button" href="/products">Products</a>
+                        <a class="navbar-button" href="/about">About</a> </navbar
                     ><%- body %>
                 </main>
             </div>
