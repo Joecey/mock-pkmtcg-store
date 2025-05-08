@@ -56,7 +56,7 @@ connection.connect((err) => {
         console.log('Connected to database!')
         // start the server
         app.listen(port, () => {
-            console.log('Server is now running on port ' + port)
+            console.log('Server is now available at', `http://localhost:${port}/`)
         })
     }
 })
