@@ -7,6 +7,16 @@ const expressLayouts = require('express-ejs-layouts')
 const indexRouter = require('./routes/index')
 const productsRouter = require('./routes/products')
 const aboutRouter = require('./routes/about')
+const cartRouter = require('./routes/cart')
+const loginRouter = require('./routes/login')
+
+// import out required packages + setup auth
+const auth = require('./packages/auth')
+auth.addUser({ user: 'test', password: 'test1234' })
+auth.addUser({ user: 'test', password: 'test1234' })
+console.log(auth.isAuthenticated({ user: 'test', password: 'test1234' })) // returns true
+console.log(auth.isAuthenticated({ user: 'test123', password: 'test1234' })) // returns true
+console.log(auth.isAuthenticated({ user: 'test', password: 'test12345' })) // returns false
 
 // setup express server with ejs templating
 const app = express()
@@ -25,6 +35,8 @@ app.set('layout', './layouts/baseLayout') // default layout to use
 app.use('/', indexRouter) // This allows us to handle GET, POST, etc... on specific routes
 app.use('/products', productsRouter)
 app.use('/about', aboutRouter)
+app.use('/cart', cartRouter)
+app.use('/profile', loginRouter)
 
 app.use((_req, res, _next) => {
     res.status(404).render('404', { title: 'Page Not Found' })

@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
     // render our view
-    res.send('cart page', { title: 'TODO CART PAGE' })
+    res.render('cart', { title: 'Your Cart' })
 })
 
 router.post('/complete-order', (req, res) => {
