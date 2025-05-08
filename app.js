@@ -12,11 +12,16 @@ const loginRouter = require('./routes/login')
 
 // import out required packages + setup auth
 const auth = require('./packages/auth')
-auth.addUser({ user: 'test', password: 'test1234' })
-auth.addUser({ user: 'test', password: 'test1234' })
-console.log(auth.isAuthenticated({ user: 'test', password: 'test1234' })) // returns true
-console.log(auth.isAuthenticated({ user: 'test123', password: 'test1234' })) // returns true
-console.log(auth.isAuthenticated({ user: 'test', password: 'test12345' })) // returns false
+auth.addUser({ user: 'user@123.com', password: 'pass' })
+
+// connect to the database, and return error if it fails
+const db = require('./packages/database')
+db.initDatabase({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'g00438816',
+})
 
 // setup express server with ejs templating
 const app = express()
@@ -42,7 +47,16 @@ app.use((_req, res, _next) => {
     res.status(404).render('404', { title: 'Page Not Found' })
 })
 
-// start the server
-app.listen(port, () => {
-    console.log('Server is now running on port ' + port)
+const connection = db.getConnection()
+connection.connect((err) => {
+    if (err) {
+        console.log('Error connecting to the database!', err.message)
+        process.exit(-1)
+    } else {
+        console.log('Connected to database!')
+        // start the server
+        app.listen(port, () => {
+            console.log('Server is now running on port ' + port)
+        })
+    }
 })
