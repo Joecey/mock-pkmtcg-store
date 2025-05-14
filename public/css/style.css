@@ -48,3 +48,26 @@ h1 {
 .navbar-button:hover {
     color: var(--accent) !important;
 }
+
+.pokemon-card-preview {
+    width: 100%;
+    max-width: 14rem;
+}
+
+.pokemon-card-preview:hover {
+    transform: scale(1.05) rotate(-2deg);
+    transition: all 0.2s ease-in;
+}
+
+.Grass {
+    background-color: #7ed957;
+}
+.Fire {
+    background-color: #ff8c00;
+}
+.Water {
+    background-color: #00a3e0;
+}
+.Electric {
+    background-color: #f2d600;
+}
