@@ -18,7 +18,7 @@ router.get('/', (_req, res) => {
     })
 })
 
-router.get('/pokemon/:type', (req, res) => {
+router.get('/:type', (req, res) => {
     const type = req.params.type
 
     connection.query(
