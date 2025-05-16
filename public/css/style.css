@@ -29,11 +29,35 @@ h1 {
     font-family: 'Cal Sans', sans-serif;
     font-weight: 400;
     font-style: normal;
+    font-size: 3rem !important;
 }
 
+.custom-button {
+    background-color: var(--secondary) !important;
+    color: var(--text) !important;
+}
+.custom-button:hover {
+    background-color: var(--accent) !important;
+}
+
+mark {
+    text-decoration: underline;
+    padding: 0.1em 0.4em;
+    border-radius: 0.8em 0.3em;
+    background: transparent;
+    background-image: linear-gradient(to right, var(--primary), var(--secondary) 4%, var(--accent));
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
 .image404pikachu {
     margin-left: 1rem;
     max-width: 10rem;
+    height: auto;
+    object-fit: contain;
+}
+.hero-image {
+    margin-left: 1rem;
+    max-width: 14rem;
     height: auto;
     object-fit: contain;
 }

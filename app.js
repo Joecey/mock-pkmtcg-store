@@ -9,6 +9,7 @@ const productsRouter = require('./routes/products')
 const aboutRouter = require('./routes/about')
 const cartRouter = require('./routes/cart')
 const loginRouter = require('./routes/login')
+const pokemonRouter = require('./routes/pokemon')
 
 // import out required packages + setup auth
 const auth = require('./packages/auth')
@@ -36,6 +37,7 @@ app.use('/products', productsRouter)
 app.use('/about', aboutRouter)
 app.use('/cart', cartRouter)
 app.use('/profile', loginRouter)
+app.use('/pokemon', pokemonRouter)
 
 app.use((_req, res, _next) => {
     res.status(404).render('404', { title: 'Page Not Found' })

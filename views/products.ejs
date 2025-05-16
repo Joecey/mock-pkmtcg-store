@@ -1,7 +1,9 @@
 <!-- views/products.ejs -->
 <div class="d-inline-block text-center container px-2">
     <div id="product-page-info" class="row justify-content-center">
-        <h1><%= title %></h1>
+        <h1>
+            <%= title %>
+        </h1>
         <p class="col-12 col-md-8">
             Browse our complete collection of Pokémon cards available in the store. Whether you're
             hunting for a classic favorite or something new, we've got them all. Use the
@@ -12,22 +14,18 @@
     </div>
 
     <div id="type-button-filters" class="row align-items-center justify-content-center gap-5 col-md-8 col-12 "></div>
-        <a href="/products" class="btn col btn-primary">All</a>
-        <a href="/products/fire" class="btn col btn-primary">Fire</a>
-        <a href="/products/water" class="btn col btn-primary">Water</a>
-        <a href="/products/grass" class="btn col btn-primary">Grass</a>
-        <a href="/products/electric" class="btn col btn-primary">Electric</a>
-    </div>
+    <a href="/products" class="btn col  custom-button">All</a>
+    <a href="/products/fire" class="btn col  custom-button">Fire</a>
+    <a href="/products/water" class="btn col  custom-button">Water</a>
+    <a href="/products/grass" class="btn col  custom-button">Grass</a>
+    <a href="/products/electric" class="btn col  custom-button">Electric</a>
+</div>
 
-    <div id="products" class="mt-4 d-flex flex-wrap justify-content-center gap-5">
-        <% products.forEach((product) => { %>
+<div id="products" class="mt-4 d-flex flex-wrap justify-content-center gap-5">
+    <% products.forEach((product)=> { %>
         <div class="d-flex flex-column justify-content-center align-items-center gap-3">
             <a href="/">
-                <img
-                    class="pokemon-card-preview"
-                    src="<%- product.imagepath %>"
-                    alt="<%- product.product %>"
-                />
+                <img class="pokemon-card-preview" src="<%- product.imagepath %>" alt="<%- product.product %>" />
             </a>
             <p>
                 <strong><%- product.product %></strong>
@@ -35,5 +33,5 @@
             </p>
         </div>
         <%});%>
-    </div>
+</div>
 </div>
