@@ -24,7 +24,7 @@
 <div id="products" class="mt-4 d-flex flex-wrap justify-content-center gap-5">
     <% products.forEach((product)=> { %>
         <div class="d-flex flex-column justify-content-center align-items-center gap-3">
-            <a href="/">
+            <a href="/pokemon/<%- product.id %>">
                 <img class="pokemon-card-preview" src="<%- product.imagepath %>" alt="<%- product.product %>" />
             </a>
             <div class="d-flex flex-column justify-content-center align-items-center">
