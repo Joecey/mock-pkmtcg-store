@@ -14,11 +14,11 @@
     </div>
 
     <div id="type-button-filters" class="row align-items-center justify-content-center gap-5 col-md-8 col-12 "></div>
-    <a href="/products" class="btn col  custom-button">All</a>
-    <a href="/products/fire" class="btn col  custom-button">Fire</a>
-    <a href="/products/water" class="btn col  custom-button">Water</a>
-    <a href="/products/grass" class="btn col  custom-button">Grass</a>
-    <a href="/products/electric" class="btn col  custom-button">Electric</a>
+    <a href="/products" class="btn col mb-1 custom-button">All</a>
+    <a href="/products/fire" class="btn col mb-1 custom-button">Fire</a>
+    <a href="/products/water" class="btn col mb-1 custom-button">Water</a>
+    <a href="/products/grass" class="btn col mb-1 custom-button">Grass</a>
+    <a href="/products/electric" class="btn col mb-1 custom-button">Electric</a>
 </div>
 
 <div id="products" class="mt-4 d-flex flex-wrap justify-content-center gap-5">
@@ -27,10 +27,14 @@
             <a href="/">
                 <img class="pokemon-card-preview" src="<%- product.imagepath %>" alt="<%- product.product %>" />
             </a>
-            <p>
-                <strong><%- product.product %></strong>
-                <span class="badge <%- product.type %>"><%- product.type %></span>
-            </p>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <p class="mb-0">
+                    <strong><%- product.product %></strong>
+                    <span class="badge <%- product.type %>"><%- product.type %></span>
+                </p>
+                <p>€<%- product.price %>.00
+                </p>
+            </div>
         </div>
         <%});%>
 </div>

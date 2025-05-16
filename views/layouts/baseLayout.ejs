@@ -1,51 +1,44 @@
 <!-- views/index.ejs -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/css/style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Space+Grotesk:wght@300..700&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-            crossorigin="anonymous"
-        />
-        <title><%= title %></title>
-    </head>
-    <body>
-        <!-- this is where our pages that our routes specify will go into -->
-        <div class="container">
-            <div class="row justify-content-center">
-                <main class="d-flex flex-column align-items-center min-vh-100">
-                    <navbar
-                        class="position-relative d-flex flex-row gap-3 mb-4 justify-content-center align-items-center w-100"
-                    >
-                        <img
-                            id="HomeBrewedTCGLogo"
-                            src="/assets/logo.png"
-                            alt="HomeBrewedTCG Logo"
-                        />
 
-                        <a class="navbar-button" href="/">Home</a>
-                        <a class="navbar-button" href="/products">Products</a>
-                        <a class="navbar-button" href="/about">About</a> </navbar
-                    ><%- body %>
-                </main>
-            </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <!-- this is where our pages that our routes specify will go into -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <main class="d-flex flex-column align-items-center min-vh-100">
+                <navbar
+                    class="position-relative d-flex flex-row gap-3 mb-4 justify-content-center align-items-center w-100">
+                    <img id="HomeBrewedTCGLogo" src="/assets/logo.png" alt="HomeBrewedTCG Logo" />
+
+                    <a class="navbar-button" href="/">Home</a>
+                    <a class="navbar-button" href="/products">Products</a>
+                    <a class="navbar-button" href="/cart">Cart</a>
+                    <a class="navbar-button" href="/account">Account</a>
+                </navbar><%- body %>
+            </main>
         </div>
+    </div>
 
-        <!-- bootstrap popper animations -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-            crossorigin="anonymous"
-        ></script>
-    </body>
+    <!-- bootstrap popper animations -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>

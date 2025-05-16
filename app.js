@@ -6,7 +6,6 @@ const expressLayouts = require('express-ejs-layouts')
 // import our routes
 const indexRouter = require('./routes/index')
 const productsRouter = require('./routes/products')
-const aboutRouter = require('./routes/about')
 const cartRouter = require('./routes/cart')
 const loginRouter = require('./routes/login')
 const pokemonRouter = require('./routes/pokemon')
@@ -34,7 +33,6 @@ app.set('layout', './layouts/baseLayout') // default layout to use for all pages
 // setup routing from our routes file
 app.use('/', indexRouter) // This allows us to handle GET, POST, etc... on specific routes
 app.use('/products', productsRouter)
-app.use('/about', aboutRouter)
 app.use('/cart', cartRouter)
 app.use('/profile', loginRouter)
 app.use('/pokemon', pokemonRouter)
