@@ -1,10 +1,14 @@
 const mysql = require('mysql2')
 
+// library to load environment variables from .env file
+const dotenv = require('dotenv')
+dotenv.config()
+
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'g00438816',
+    host: process.env.host,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.database,
 })
 
 module.exports = connection

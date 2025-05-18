@@ -1,20 +1,73 @@
 <!-- views/index.ejs -->
-<div id="home-hero-text" class="d-inline-block text-center">
-    <h1>Welcome to HomeBrewedTCG!</h1>
-</div>
-<div id="product-page-info" class="row justify-content-center">
-    <div class="my-4 d-flex flex-md-row flex-column justify-content-center gap-5  col-12 col-md-8">
-        <img src="/assets/404-pikachu.png" class="hero-image" alt="Hero Pikachu" />
-        <div class="d-flex flex-column justify-content-center gap-3">
-            <h2 class="fs-2 info-header"><mark>Who are we?</mark></h2>
-            <p>
-                At HomeBrewedTCG, we’re passionate collectors and sellers of unique Pokémon cards. We offer a curated
-                selection of authentic cards, from vintage classics to the latest releases. Whether you’re a seasoned
-                trainer or just starting your collection, you’ll find rare finds, competitive prices, and friendly
-                service. Explore our shop, discover exclusive deals, and let us help you build your ultimate deck!
-            </p>
+
+<div class="d-inline-block text-center container px-2 ">
+    <div id="home-hero-text" class="d-inline-block text-center">
+        <h1>Welcome to HomeBrewedTCG!</h1>
+    </div>
+    <div id="product-page-info" class="row justify-content-center">
+        <div class="my-4 d-flex flex-md-row flex-column justify-content-center gap-5  col-12 col-md-8">
+            <img src="/assets/404-pikachu.png" class="hero-image" alt="Hero Pikachu" />
+            <div class="d-flex flex-column justify-content-center ">
+                <h2 class="fs-2 info-header text-start">Who are we?</h2>
+                <p class="text-start">
+                    At HomeBrewedTCG, we’re passionate collectors and sellers of unique Pokémon cards. We offer a
+                    curated
+                    selection of authentic cards, from vintage classics to the latest releases. Whether you’re a
+                    seasoned
+                    trainer or just starting your collection, you’ll find rare finds, competitive prices, and friendly
+                    service. Explore our shop, discover exclusive deals, and let us help you build your ultimate deck!
+                </p>
+            </div>
         </div>
     </div>
+    <h1>Hot Products 🔥🔥</h1>
+    <h2 class="fs-5">Grab them before it's too late!</h2>
+
+    <div class="row justify-content-center mt-4">
+        <div id="carousel-featured-products" class="carousel slide col-md-4 col-12" data-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carousel-featured-products" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carousel-featured-products" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carousel-featured-products" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <% featuredProducts.forEach((product, idx)=> { %>
+                    <% if(idx===0){ %>
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="<%- product.imagepath %>" alt="<%- product.product %>">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="carousel-image-caption text-bg-danger px-1">
+                                    <%= Math.floor(Math.random() * 100) + 1 %> currently watching!
+                                </h5>
+                            </div>
+                        </div>
+                        <% } else{ %>
+                            <div class="carousel-item ">
+                                <img class="d-block w-100" src="<%- product.imagepath %>" alt="<%- product.product %>">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 class="carousel-image-caption text-bg-danger px-1">
+                                        <%= Math.floor(Math.random() * 100) + 1 %> currently watching!
+                                    </h5>
+                                </div>
+                            </div>
+                            <% } %>
+                                <%});%>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-featured-products"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-featured-products"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
 </div>
-<h1>Hot Products 🔥🔥</h1>
-<h2 class="fs-5">Grab them before it's too late!</h2>
