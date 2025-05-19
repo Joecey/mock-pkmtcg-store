@@ -52,11 +52,12 @@
                 },
                 body: JSON.stringify({ username, password })
             });
-            console.log(response);
+
             if (response.ok) {
                 // Maybe redirect to dashboard or success page
                 window.location.href = targetPath;
             } else {
+                localStorage.removeItem("cart");
                 window.location.href = '/account';
             }
         }

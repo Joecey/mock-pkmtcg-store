@@ -1,5 +1,20 @@
 <!-- views/cart.ejs -->
 <div class="d-inline-block text-center">
-    <h1><%= title %></h1>
+    <h1>
+        <%= title %>
+    </h1>
     <p>This is the cart page</p>
 </div>
+
+<script>
+    const cart = JSON.parse(localStorage.getItem("cart"));
+
+    if (cart && Array.isArray(cart)) {
+        console.log(cart.length);
+        cart.forEach(item => {
+            console.log(`Item ID: ${item.id}, Quantity: ${item.quantity}`);
+        });
+    } else {
+        console.log("Cart is empty or not an array.");
+    }
+</script>

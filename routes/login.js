@@ -1,7 +1,6 @@
-// Handle GET, POST, PUT, DELETE requests that are pointed towards index
-
 const express = require('express')
 const router = express.Router()
+const auth = require('../packages/auth')
 
 router.get('/', (req, res) => {
     // render our view
@@ -14,11 +13,15 @@ router.get('/profile', (req, res) => {
 })
 
 router.post('/check-auth', (req, res) => {
-    console.log(req.body)
-    res.status(200).json({ success: true })
+    const { username, password } = req.body
 
-    // If not authorized:
-    // res.status(401).json({ error: 'Unauthorized' })
+    // if there is a valid user
+    if (username && password && auth.isAuthenticated({ user: username, password })) {
+        res.status(200).json({ success: true })
+    } else {
+        // If not:
+        res.status(401).json({ error: 'Unauthorized' })
+    }
 })
 
 // export our index.js route to app.js

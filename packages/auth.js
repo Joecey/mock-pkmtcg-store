@@ -12,8 +12,10 @@ const addUser = ({ user, password }) => {
 const isAuthenticated = ({ user, password }) => {
     const foundUser = usersList.find((u) => u.user === user && u.password === password)
     if (foundUser) {
+        console.log('User is authenticated')
         return true
     }
+    console.log('User is not authenticated')
     return false
 }
 

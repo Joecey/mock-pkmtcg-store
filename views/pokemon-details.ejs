@@ -8,20 +8,32 @@
     </div>
 </div>
 
-<button type="button" class="btn custom-button" id="add-to-cart" onclick="addToCartFunction()">Add Item to
-    Cart</button>
+<button type="button" class="btn custom-button" id="add-to-cart" onclick="addToCartFunction(
+        {id: '<%= product.id %>', 
+        quantity: 1, 
+        product: '<%= product.product %>',
+        imagepath: '<%= product.imagepath %>', 
+        price:'<%= product.price %>' })">
+    Add Item to Cart</button>
 
 
 <script>
-    const addToCartFunction = () => {
-        const mockItems = { id: 1, quantity: 1 }
+    const addToCartFunction = ({ id, quantity, product, imagepath, price }) => {
+        const newItem = { id, quantity, product, imagepath, price };
         let tempCart = [];
         const currentCart = JSON.parse(localStorage.getItem("cart"));
 
         if (currentCart && Array.isArray(currentCart)) {
             tempCart = currentCart;
         }
-        tempCart.push(mockItems);
+
+        // check if there is an existing item with matching id in cart 
+        const existingItem = tempCart.find(item => item.id === newItem.id);
+        if (existingItem) {
+            existingItem.quantity += newItem.quantity;
+        } else {
+            tempCart.push(newItem);
+        }
         console.log(tempCart);
         localStorage.setItem("cart", JSON.stringify(tempCart));
     };
