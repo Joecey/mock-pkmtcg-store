@@ -34,7 +34,7 @@ app.set('layout', './layouts/baseLayout') // default layout to use for all pages
 app.use('/', indexRouter) // This allows us to handle GET, POST, etc... on specific routes
 app.use('/products', productsRouter)
 app.use('/cart', cartRouter)
-app.use('/login', loginRouter)
+app.use('/account', loginRouter)
 app.use('/pokemon', pokemonRouter)
 
 app.use((_req, res, _next) => {

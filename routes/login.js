@@ -18,7 +18,7 @@ router.post('/check-auth', (req, res) => {
     res.status(200).json({ success: true })
 
     // If not authorized:
-    res.status(401).json({ error: 'Unauthorized' })
+    // res.status(401).json({ error: 'Unauthorized' })
 })
 
 // export our index.js route to app.js

@@ -6,3 +6,24 @@
             <p class="col-12 col-md-8"><%- product.description %></p>
         </div>
     </div>
+</div>
+
+<button type="button" class="btn custom-button" id="add-to-cart" onclick="addToCartFunction()">Add Item to
+    Cart</button>
+
+
+<script>
+    const addToCartFunction = () => {
+        const mockItems = { id: 1, quantity: 1 }
+        let tempCart = [];
+        const currentCart = JSON.parse(localStorage.getItem("cart"));
+
+        if (currentCart && Array.isArray(currentCart)) {
+            tempCart = currentCart;
+        }
+        tempCart.push(mockItems);
+        console.log(tempCart);
+        localStorage.setItem("cart", JSON.stringify(tempCart));
+    };
+
+</script>

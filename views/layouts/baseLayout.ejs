@@ -28,8 +28,8 @@
 
                     <a class="navbar-button" href="/">Home</a>
                     <a class="navbar-button" href="/products">Products</a>
-                    <a class="navbar-button" href="/cart">Cart</a>
-                    <a class="navbar-button" href="#" onclick="checkAuthAndRedirect('/login/profile')">Account</a>
+                    <a class="navbar-button" href="#" onclick="checkAuthAndRedirect('/cart')">Cart</a>
+                    <a class="navbar-button" href="#" onclick="checkAuthAndRedirect('/account/profile')">Account</a>
                 </navbar><%- body %>
             </main>
         </div>
@@ -45,7 +45,7 @@
             const username = localStorage.getItem("username");
             const password = localStorage.getItem("password");
 
-            const response = await fetch('/login/check-auth', {
+            const response = await fetch('/account/check-auth', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -57,7 +57,7 @@
                 // Maybe redirect to dashboard or success page
                 window.location.href = targetPath;
             } else {
-                window.location.href = '/login';
+                window.location.href = '/account';
             }
         }
     </script>
