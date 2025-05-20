@@ -21,6 +21,10 @@ navbar > a {
     font-weight: 600;
 }
 
+form {
+    max-width: 30rem;
+}
+
 #HomeBrewedTCGLogo {
     height: 100%;
 }

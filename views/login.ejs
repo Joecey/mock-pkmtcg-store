@@ -1,14 +1,77 @@
 <!-- views/login.ejs -->
-<div class="d-inline-block text-center">
-    <h1>
-        <%= title %>
-    </h1>
-    <p>This is the login page</p>
+<div class="d-inline-block text-center container">
+    <div class="row">
+        <h1>
+            <%= title %>
+        </h1>
+        <p>Please login with your details to view your cart</p>
+    </div>
+    <form id="loginForm" method="POST" class="mx-auto">
+        <div class="mb-3">
+            <label for="username" class="form-label">Email</label>
+            <input type="email" class="form-control" id="username" name="username" required>
+            <div class="invalid-feedback">
+                Please enter a valid email address.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+            <div class="invalid-feedback">
+                Please enter your password.
+            </div>
+        </div>
+        <button type="submit" class="btn custom-button w-100">Login</button>
+    </form>
+
 </div>
 
-<!-- when you are logging in, clear the cart details so they don't accidentally carry over between users  -->
-<!-- TODO: specify cart parameters and don't just completely clear localStorage -->
-<!-- here, if we are trying to login as a new user, delete the cart -->
 <script>
+    // clear local storage when you are on the login page
     localStorage.clear();
+
+    // check validation for the form before submitting
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', async function (event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        // check for initial validation - user gets feedback if they don't fill in the form correctly 
+        form.classList.add('was-validated');
+
+        if (!form.checkValidity()) {
+            return; // don't proceed if form is invalid
+        }
+
+        // at this point, form is valid then we can proceed with our mock auth
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('/account/check-auth', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                // if successful, we can store the username and password in local storage and redirect to the cart
+                localStorage.setItem('username', username);
+
+                // Note this is usually bad practice, but for this example it's okay
+                localStorage.setItem('password', password);
+                window.location.href = '/cart';
+
+            } else {
+                alert('This is not a valid account. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred during login.');
+        }
+
+    });
 </script>
