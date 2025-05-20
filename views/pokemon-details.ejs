@@ -14,28 +14,44 @@
         product: '<%= product.product %>',
         imagepath: '<%= product.imagepath %>', 
         price:'<%= product.price %>' })">
-    Add Item to Cart</button>
+    Add to Cart</button>
 
 
 <script>
-    const addToCartFunction = ({ id, quantity, product, imagepath, price }) => {
-        const newItem = { id, quantity, product, imagepath, price };
-        let tempCart = [];
-        const currentCart = JSON.parse(localStorage.getItem("cart"));
+    const addToCartFunction = async ({ id, quantity, product, imagepath, price }) => {
+        // before adding items to cart, check if user is logged in from local storage
+        const username = localStorage.getItem("username");
+        const password = localStorage.getItem("password");
 
-        if (currentCart && Array.isArray(currentCart)) {
-            tempCart = currentCart;
-        }
+        const response = await fetch('/account/check-auth', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
 
-        // check if there is an existing item with matching id in cart 
-        const existingItem = tempCart.find(item => item.id === newItem.id);
-        if (existingItem) {
-            existingItem.quantity += newItem.quantity;
+        if (response.ok) {
+            const newItem = { id, quantity, product, imagepath, price };
+            let tempCart = [];
+            const currentCart = JSON.parse(localStorage.getItem("cart"));
+
+            if (currentCart && Array.isArray(currentCart)) {
+                tempCart = currentCart;
+            }
+
+            // check if there is an existing item with matching id in cart 
+            const existingItem = tempCart.find(item => item.id === newItem.id);
+            if (existingItem) {
+                existingItem.quantity += newItem.quantity;
+            } else {
+                tempCart.push(newItem);
+            }
+            console.log(tempCart);
+            localStorage.setItem("cart", JSON.stringify(tempCart));
         } else {
-            tempCart.push(newItem);
+            window.location.href = '/account';
         }
-        console.log(tempCart);
-        localStorage.setItem("cart", JSON.stringify(tempCart));
     };
 
 </script>
