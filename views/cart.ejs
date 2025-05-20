@@ -3,7 +3,11 @@
     <h1>
         <%= title %>
     </h1>
-    <p>This is the cart page</p>
+    <p id="default-cart-text">You cart is currently empty!</p>
+    <div id="cart-items" class="d-flex flex-column justify-content-center"></div>
+
+    <p>Total: <strong id="cart-total">€0</strong>. Click to purchase now!</p>
+    <button id="logout" class="btn custom-button w-auto" onclick="purchase()">Purchase</button>
 </div>
 
 <script>
@@ -14,7 +18,43 @@
         cart.forEach(item => {
             console.log(`Item ID: ${item.id}, Quantity: ${item.quantity}`);
         });
+        document.getElementById("default-cart-text").textContent = "Please see your items below";
+
+        const cartItemsDiv = document.getElementById("cart-items");
+        cart.forEach(item => {
+
+            // create the new div for the item 
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "w-auto d-flex flex-md-row flex-column align-items-center mb-3 gap-md-4 gap-2";
+            itemDiv.innerHTML = `
+                <img src="${item.imagepath}" class="cart-items-image" alt="${item.product}">
+                <div class="d-flex flex-column text-start gap-0">
+                    <p class="mb-0"><strong>Product Name:</strong> ${item.product}</p>
+                    <p class="mb-0"><strong>Quantity:</strong> ${item.quantity}</p>
+                    <p class="mb-0"><strong>Total:</strong> €${item.quantity * item.price}</p>
+                </div>
+            `;
+
+            // then add it as a new child inside the cart items div
+            cartItemsDiv.appendChild(itemDiv);
+
+            // calculate the total price
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            document.getElementById("cart-total").textContent = `€${totalPrice}`;
+        });
+
+
     } else {
         console.log("Cart is empty or not an array.");
+    }
+
+    const purchase = () => {
+        if (document.getElementById("cart-total").textContent === "€0") {
+            alert("Your cart is empty! Go add some items to your cart!");
+            return;
+        }
+        else {
+            window.location.href = "/cart/completed";
+        }
     }
 </script>

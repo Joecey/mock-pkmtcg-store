@@ -1,0 +1,27 @@
+<!-- views/completed-order.ejs -->
+<div class="d-inline-block text-center container">
+    <div class="row justify-content-center">
+        <h1>
+            <%= title %>
+        </h1>
+        <img src="/assets/404-pikachu.png" class="w-25 my-4" alt="Pikachu" />
+        <p>Congratulations! Your new Pokemon cards are on their way!</p>
+
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+    localStorage.removeItem("cart");
+
+    // fire confetti on page load!
+    window.addEventListener('load', () => {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    });
+</script>

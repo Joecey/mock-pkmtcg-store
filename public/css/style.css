@@ -71,6 +71,14 @@ mark {
     object-fit: contain;
 }
 
+.product-image {
+    max-width: 24rem;
+}
+
+.cart-items-image {
+    max-width: 6rem;
+}
+
 .navbar-button {
     padding: 0.5rem;
     border-radius: 1rem;

@@ -8,8 +8,14 @@ router.get('/', (req, res) => {
     res.render('cart', { title: 'Your Cart' })
 })
 
-router.post('/complete-order', (req, res) => {
-    res.send('complete order POST', { title: 'TODO COMPLETE PURCHASE' })
+router.get('/completed', (req, res) => {
+    const referer = req.get('Referer') || ''
+
+    if (referer.includes('/cart')) {
+        res.render('completed-order', { title: 'Purchased' })
+    } else {
+        res.redirect('/')
+    }
 })
 
 // export our index.js route to app.js
