@@ -26,10 +26,26 @@
                     class="position-relative d-flex flex-row gap-3 mb-4 justify-content-md-center  justify-content-between align-items-center w-100">
                     <img id="HomeBrewedTCGLogo" src="/assets/logo.png" alt="HomeBrewedTCG Logo" />
 
-                    <a class="navbar-button" href="/">Home</a>
-                    <a class="navbar-button" href="/products">Products</a>
-                    <a class="navbar-button" href="#" onclick="checkAuthAndRedirect('/cart')">Cart</a>
-                    <a class="navbar-button" href="#" onclick="checkAuthAndRedirect('/account/profile')">Account</a>
+                    <a class="navbar-button d-none d-md-inline" href="/">Home</a>
+                    <a class="navbar-button d-none d-md-inline" href="/products">Products</a>
+                    <a class="navbar-button d-none d-md-inline" href="#"
+                        onclick="checkAuthAndRedirect('/cart')">Cart</a>
+                    <a class="navbar-button d-none d-md-inline" href="#"
+                        onclick="checkAuthAndRedirect('/account/profile')">Account</a>
+
+                    <div class="dropdown d-md-none d-inline">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Menu
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/">Home</a>
+                            <a class="dropdown-item" href="/products">Products</a>
+                            <a class="dropdown-item" href="#" onclick="checkAuthAndRedirect('/cart')">Cart</a>
+                            <a class="dropdown-item" href="#"
+                                onclick="checkAuthAndRedirect('/account/profile')">Account</a>
+                        </div>
+                    </div>
                 </navbar><%- body %>
             </main>
         </div>
